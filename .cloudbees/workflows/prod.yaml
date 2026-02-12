@@ -1,0 +1,13 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: prod
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    steps:
+      - uses: cloudbees-io/register-deployed-artifact@v2
+        with:
+          labels: newsman
+          artifact-id: 245ac328-42b0-42ac-99a5-4ccbd6a9279c
+          target-environment: env1
