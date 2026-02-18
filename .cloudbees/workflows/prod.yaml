@@ -2,9 +2,6 @@ apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: prod
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 jobs:
   deploy:
@@ -14,3 +11,13 @@ jobs:
           labels: newsman
           artifact-id: b251a924-606a-4cd2-b703-056fa7bd56b8
           target-environment: env1
+      - uses: cloudbees-io/register-deployed-artifact@v2
+        with:
+          labels: newsman
+          artifact-id: 970a8edb-f852-4b23-a639-11830a6761b9
+          target-environment: env2
+      - uses: cloudbees-io/register-deployed-artifact@v2
+        with:
+          labels: newsman
+          artifact-id: 970a8edb-f852-4b23-a639-11830a6761b9
+          target-environment: env3
